@@ -2,9 +2,10 @@
   "name": "stack-gen",
   "version": "1.0.0",
   "description": "CLI tool for scaffolding out projects, install/remove dependencies, other options to assist in the beginning stages of development",
+  "type": "module",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "tsc && node dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/mdubelbeis/stack-gen/issues"
   },
-  "homepage": "https://github.com/mdubelbeis/stack-gen#readme"
+  "homepage": "https://github.com/mdubelbeis/stack-gen#readme",
+  "devDependencies": {
+    "@types/node": "^20.2.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.3"
+  }
 }
