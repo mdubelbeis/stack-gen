@@ -1,0 +1,19 @@
+{
+  "name": "stack-gen",
+  "version": "1.0.0",
+  "description": "CLI tool for scaffolding out projects, install/remove dependencies, other options to assist in the beginning stages of development",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdubelbeis/stack-gen.git"
+  },
+  "author": "Mason J. Dubelbeis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mdubelbeis/stack-gen/issues"
+  },
+  "homepage": "https://github.com/mdubelbeis/stack-gen#readme"
+}
