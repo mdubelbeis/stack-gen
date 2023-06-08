@@ -5,15 +5,15 @@ import { execSync } from "child_process";
 import { stdin as input, stdout as output } from "node:process";
 import chalk from "chalk";
 import _ from "lodash";
-import promptSync from "prompt-sync";
 import { FRAMEWORKS, CLI_COMMANDS } from "./data/data.mjs";
-import { CLIENT_RENEG_LIMIT } from "tls";
-import { clear } from "console";
-// const { FRAMEWORKS, CLI_COMMANDS } = require("./data/data");
 
 // RANDOMIZE FRAMEWORK
 const randomIndex = Math.floor(Math.random() * FRAMEWORKS.length);
 const randomFramework = _.startCase(_.toLower(FRAMEWORKS[randomIndex]));
+
+const toTitleCase = (str: string): string => {
+  return _.startCase(_.toLower(str));
+};
 
 const rl = readline.createInterface({ input, output });
 
@@ -33,6 +33,7 @@ ${banner}
 
 ${chalk.bold(subHeader)}
 
+
 ${chalk.hex("#DEADED")("1. React")}
 ${chalk.hex("#DEADED")("2. Vue")}
 ${chalk.hex("#DEADED")("3. Svelte")}
@@ -41,21 +42,24 @@ ${chalk.hex("#DEADED")("5. Qwik")}
 ${chalk.hex("#DEADED")("6. Solid")}
 ${chalk.hex("#DEADED")("7. Astro")}
 ${chalk.hex("#DEADED")("9. Nuxt")}
-${chalk.hex("#DEADED")("10. Sveltekit")}
-${chalk.hex("#DEADED")("11. Solidstart")}
-${chalk.hex("#DEADED")("12. Qwikcity")}
+${chalk.hex("#DEADED")("10. SvelteKit")}
+${chalk.hex("#DEADED")("11. SolidStart")}
+${chalk.hex("#DEADED")("12. Qwik City")}
 ${chalk.hex("#DEADED")("13. Random")}
-${chalk.red("14. Exit")}
+${chalk.hex("#DEADED")("14. Angular")}
+${chalk.hex("#FF0eee")("15. Exit")}
 
 ${chalk.blue("Please enter your selection: ")}`;
 };
 
 const main = async () => {
   const answer = await rl.question(menu());
+
   switch (answer) {
     case "1":
-      console.log(chalk.bgBlue("Installing React..."));
-      const stack = CLI_COMMANDS.react; // Example CLI command
+      const FRAMEWORK = "react";
+      console.log(chalk.bgBlue(`Installing ${toTitleCase(FRAMEWORK)}`));
+      const stack = CLI_COMMANDS[FRAMEWORK]; // Example CLI command
 
       try {
         const command = `cd ~/Desktop && ${stack}`;
@@ -99,7 +103,10 @@ const main = async () => {
       console.log(chalk.blue(randomFramework));
       break;
     case "14":
-      console.log(chalk.blue("Exit"));
+      console.log(chalk.green("Angular"));
+      break;
+    case "15":
+      console.log(chalk.green("Happy Coding!"));
       break;
     default:
       console.log(chalk.red("Invalid selection"));
@@ -107,8 +114,7 @@ const main = async () => {
   }
 
   rl.close();
-  console.log("Goodbye!");
-  return -1;
+  return;
 };
 
 main();

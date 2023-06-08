@@ -4,7 +4,7 @@
   "description": "CLI tool for scaffolding out projects, install/remove dependencies, other options to assist in the beginning stages of development",
   "main": "dist/index.js",
   "scripts": {
-    "start": "tsc && nodemon dist/index.mjs"
+    "start": "tsc && node dist/index.mjs"
   },
   "repository": {
     "type": "git",
