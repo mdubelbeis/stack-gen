@@ -1,11 +1,12 @@
 #!/opt/homebrew/bin/node
 
 import * as readline from "node:readline/promises";
+import { execSync } from "child_process";
 import { stdin as input, stdout as output } from "node:process";
 import chalk from "chalk";
 import _ from "lodash";
 import promptSync from "prompt-sync";
-import { FRAMEWORKS } from "./data/data.mjs";
+import { FRAMEWORKS, CLI_COMMANDS } from "./data/data.mjs";
 import { CLIENT_RENEG_LIMIT } from "tls";
 import { clear } from "console";
 // const { FRAMEWORKS, CLI_COMMANDS } = require("./data/data");
@@ -16,32 +17,53 @@ const randomFramework = _.startCase(_.toLower(FRAMEWORKS[randomIndex]));
 
 const rl = readline.createInterface({ input, output });
 
+const bannerSequence =
+  chalk.green(" * ") + chalk.blue(" ~ ") + chalk.green(" * ");
+
+const header = chalk.bgBlue.bold(" Stack Generator  ");
+const banner = bannerSequence.repeat(4);
+
+const subHeader = chalk.blue(" Please select a framework to generate: ");
+
 const menu = () => {
   return `
-  ${chalk.blue("Welcome to the Vite Framework Generator!")}
-  ${chalk.green("Please select a framework to generate:")}
-  ${chalk.yellow("1. React")}
-  ${chalk.yellow("2. Vue")}
-  ${chalk.yellow("3. Svelte")}
-  ${chalk.yellow("4. Next")}
-  ${chalk.yellow("5. Qwik")}
-  ${chalk.yellow("6. Solid")}
-  ${chalk.yellow("7. Astro")}
-  ${chalk.yellow("9. Nuxt")}
-  ${chalk.yellow("10. Sveltekit")}
-  ${chalk.yellow("11. Solidstart")}
-  ${chalk.yellow("12. Qwikcity")}
-  ${chalk.yellow("13. Random")}
-  ${chalk.red("14. Exit")}
+${banner}
+${chalk.blue(`${bannerSequence}${header}${bannerSequence}`)}
+${banner}
 
-  ${chalk.blue("Please enter your selection: ")}`;
+${chalk.bold(subHeader)}
+
+${chalk.hex("#DEADED")("1. React")}
+${chalk.hex("#DEADED")("2. Vue")}
+${chalk.hex("#DEADED")("3. Svelte")}
+${chalk.hex("#DEADED")("4. Next")}
+${chalk.hex("#DEADED")("5. Qwik")}
+${chalk.hex("#DEADED")("6. Solid")}
+${chalk.hex("#DEADED")("7. Astro")}
+${chalk.hex("#DEADED")("9. Nuxt")}
+${chalk.hex("#DEADED")("10. Sveltekit")}
+${chalk.hex("#DEADED")("11. Solidstart")}
+${chalk.hex("#DEADED")("12. Qwikcity")}
+${chalk.hex("#DEADED")("13. Random")}
+${chalk.red("14. Exit")}
+
+${chalk.blue("Please enter your selection: ")}`;
 };
 
 const main = async () => {
   const answer = await rl.question(menu());
   switch (answer) {
     case "1":
-      console.log(chalk.blue("React"));
+      console.log(chalk.bgBlue("Installing React..."));
+      const stack = CLI_COMMANDS.react; // Example CLI command
+
+      try {
+        const command = `cd ~/Desktop && ${stack}`;
+        execSync(command, { stdio: "inherit" });
+      } catch (error) {
+        console.error("Error executing command:", error);
+      }
+      // CLI_COMMANDS.react; -- Need to get this to write
       break;
     case "2":
       console.log(chalk.blue("Vue"));
