@@ -58,10 +58,10 @@ const main = async () => {
   switch (answer) {
     case "1":
       console.log(chalk.bgBlue(`Installing React...`));
-      const stack = CLI_COMMANDS.react; // Example CLI command
+      const react = CLI_COMMANDS.react; // Example CLI command
 
       try {
-        const command = `cd ~/Desktop && ${stack}`;
+        const command = `cd ~/Desktop && ${react}`;
         execSync(command, { stdio: "inherit" });
       } catch (error) {
         console.error("Error executing command:", error);
@@ -69,7 +69,15 @@ const main = async () => {
 
       break;
     case "2":
-      console.log(chalk.blue("Vue"));
+      console.log(chalk.bgBlue(`Installing Vue...`));
+      const vue = CLI_COMMANDS.vue; // Example CLI command
+
+      try {
+        const command = `cd ~/Desktop && ${vue}`;
+        execSync(command, { stdio: "inherit" });
+      } catch (error) {
+        console.error("Error executing command:", error);
+      }
       break;
     case "3":
       console.log(chalk.blue("Svelte"));
