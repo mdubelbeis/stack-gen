@@ -34,9 +34,9 @@ ${banner}
 ${chalk.bold(subHeader)}
 
 
-${chalk.hex("#DEADED")("1. React")}
-${chalk.hex("#DEADED")("2. Vue")}
-${chalk.hex("#DEADED")("3. Svelte")}
+${chalk.hex("#DEADED")("1. React with Typescript")}
+${chalk.hex("#DEADED")("2. Vue with Typescript")}
+${chalk.hex("#DEADED")("3. Svelte with Typescript")}
 ${chalk.hex("#DEADED")("4. Next")}
 ${chalk.hex("#DEADED")("5. Qwik")}
 ${chalk.hex("#DEADED")("6. Solid")}
@@ -57,9 +57,8 @@ const main = async () => {
 
   switch (answer) {
     case "1":
-      const FRAMEWORK = "react";
-      console.log(chalk.bgBlue(`Installing ${toTitleCase(FRAMEWORK)}`));
-      const stack = CLI_COMMANDS[FRAMEWORK]; // Example CLI command
+      console.log(chalk.bgBlue(`Installing React...`));
+      const stack = CLI_COMMANDS.react; // Example CLI command
 
       try {
         const command = `cd ~/Desktop && ${stack}`;
@@ -67,7 +66,7 @@ const main = async () => {
       } catch (error) {
         console.error("Error executing command:", error);
       }
-      // CLI_COMMANDS.react; -- Need to get this to write
+
       break;
     case "2":
       console.log(chalk.blue("Vue"));
