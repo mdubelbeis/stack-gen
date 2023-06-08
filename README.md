@@ -12,3 +12,4 @@ COMING SOON!
 
 - [x] Node
 - [x] Typescript
+- [x] Lodash

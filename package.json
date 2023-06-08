@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/mdubelbeis/stack-gen#readme",
   "devDependencies": {
+    "@types/lodash": "^4.14.195",
     "@types/node": "^20.2.5",
+    "lodash": "^4.17.21",
     "nodemon": "^2.0.22",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.3"
